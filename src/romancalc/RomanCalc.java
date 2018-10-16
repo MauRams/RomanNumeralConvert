@@ -10,10 +10,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Maurice
+ * @author Maurice with reference to the following snippet https://stackoverflow.com/questions/12967896/converting-integers-to-roman-numerals-java
  */
 public class RomanCalc {
-
+//create TreeMap to establish the number conversion to be used
     private final static TreeMap<Integer, String> map = new TreeMap<Integer, String>();
      static {
     
@@ -34,22 +34,27 @@ public class RomanCalc {
     }
     
     public final static String toRoman(int num){
+        //get the corresponding entry to each number
         int l = map.floorKey(num);
         if(num == l){
             return map.get(num);
         }
+        //recursive method calls itself with the value mapped each number
         return map.get(l) + toRoman(num-l);
     }
-    
-    public static void testRomanConvert(String inString){
-        for (int i = 1; i<100; i++){
-            System.out.println(i+"\t=\t " +RomanCalc.toRoman(i));
-        }
-    }
+    //can be used to test the conversions
+//    public static void testRomanConvert(String inString){
+//        for (int i = 1; i<100; i++){
+//            System.out.println(i+"\t=\t " +RomanCalc.toRoman(i));
+//        }
+//    }
     
     public static void main(String[] args) {
+        //take input from the user and pass to an int
 		int in = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter a number: "));
+        //declare a String a to be equal to the result of passing int in to the toRoman() method above
 		String a = RomanCalc.toRoman(in);
+        //show it to the user
 		JOptionPane.showMessageDialog(null,"Your Number ("+ in + ") in Roman Numerals is " + a);
 		
 	}
