@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package romancalc;
+package com.maurams.romancalc;
 
 import java.util.TreeMap;
 import javax.swing.JOptionPane;
@@ -42,6 +42,8 @@ public class RomanCalc {
         //recursive method calls itself with the value mapped each number
         return map.get(l) + toRoman(num-l);
     }
+    
+   
     //can be used to test the conversions
 //    public static void testRomanConvert(String inString){
 //        for (int i = 1; i<100; i++){
@@ -49,14 +51,32 @@ public class RomanCalc {
 //        }
 //    }
     
+  
+    
+    
     public static void main(String[] args) {
-        //take input from the user and pass to an int
-		int in = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter a number: "));
+        //take input from the user and pass to an int - select which type of conversion is required
+        int choice = Integer.parseInt(JOptionPane.showInputDialog("Press 1 for Roman Numeral Conversion\n"
+                + "Press 2 for Numerical Conversion"));
+        
+        if(choice == 1){
+            	int in = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter a number: "));
         //declare a String a to be equal to the result of passing int in to the toRoman() method above
 		String a = RomanCalc.toRoman(in);
         //show it to the user
 		JOptionPane.showMessageDialog(null,"Your Number ("+ in + ") in Roman Numerals is " + a);
-		
+        }
+        else if(choice ==2){
+        
+		int in = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter a number: "));
+        //declare a String a to be equal to the result of passing int in to the toRoman() method above
+		String a = RomanCalc.toRoman(in);
+        //show it to the user
+		JOptionPane.showMessageDialog(null,"Your Number (" + in + ") in Roman Numerals is " + a);
+            }
+        else{
+               JOptionPane.showMessageDialog(null,"Invalid Choice");
+            }
 	}
     
 }
